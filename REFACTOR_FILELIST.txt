@@ -1,0 +1,3 @@
+8	./PLAN.md
+4	./llms.txt
+3	./TODO.md
