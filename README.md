@@ -1,2 +1,2 @@
 # brex-font
-Brex, an IBM Plex fork
+Brex is a fork of IBM
