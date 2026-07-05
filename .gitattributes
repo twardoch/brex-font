@@ -1,0 +1,13 @@
+# Fonts and editor binaries are binary — never diff or line-normalize them.
+*.ttf   binary
+*.otf   binary
+*.woff  binary
+*.woff2 binary
+*.vfj   binary
+*.vfc   binary
+
+# Normalize line endings for text sources.
+*.py    text eol=lf
+*.md    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf

@@ -128,4 +128,17 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Font working directory (UFO/FontLab sources, kept local, out of git history)
 dev/
+
+# Font build outputs — binaries ship on GitHub Releases, not in git
+fonts/
+dist/
+build/
+*.ttf
+*.otf
+*.woff
+*.woff2
+
+# macOS
+.DS_Store

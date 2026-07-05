@@ -1,0 +1,53 @@
+name: Font validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate font binaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install tooling
+        run: pip install fonttools fontbakery
+
+      - name: Collect committed fonts
+        id: collect
+        run: |
+          fonts=$(find . -type f \( -name '*.ttf' -o -name '*.otf' -o -name '*.woff2' \) \
+            -not -path './.git/*' | sort)
+          if [ -z "$fonts" ]; then
+            echo "No font binaries tracked in this repository; sources build to binaries via fontmake."
+            echo "found=" >> "$GITHUB_OUTPUT"
+          else
+            echo "$fonts"
+            # Newline-separated list survives across steps via a heredoc.
+            {
+              echo "found<<EOF"
+              echo "$fonts"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Sanity-check each font opens
+        if: steps.collect.outputs.found != ''
+        run: |
+          echo "${{ steps.collect.outputs.found }}" | while read -r f; do
+            [ -n "$f" ] || continue
+            echo "== $f =="
+            python -c "from fontTools.ttLib import TTFont; TTFont('$f').get('head')"
+          done
+
+      - name: fontbakery universal profile
+        if: steps.collect.outputs.found != ''
+        run: |
+          echo "${{ steps.collect.outputs.found }}" | tr '\n' '\0' | \
+            xargs -0 fontbakery check-universal --error-code-on ERROR

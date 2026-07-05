@@ -52,11 +52,12 @@ Brex is positioned as a fork of IBM Plex Mono, but currently lacks the infrastru
 
 ### 1.3 Version Control Hygiene
 - **Objective**: Establish proper git practices
+- **Status (2026-07)**: `.gitignore` extended for font build outputs; `.gitattributes` added; OFL.txt added; font-validation CI added; README completed; stray artifacts removed.
 - **Actions**:
-  - Update `.gitignore` for font-specific patterns
-  - Create `.gitattributes` for proper file handling
-  - Establish branch protection rules
-  - Create issue and PR templates
+  - [x] Update `.gitignore` for font-specific patterns
+  - [x] Create `.gitattributes` for proper file handling
+  - [ ] Establish branch protection rules
+  - [ ] Create issue and PR templates
 
 ## Phase 2: Identity & Differentiation (Weeks 3-4)
 

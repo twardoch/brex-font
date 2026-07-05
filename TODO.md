@@ -1,5 +1,15 @@
 # Brex Font TODO List
 
+## Modernization pass (2026-07)
+- [x] Complete the truncated README (build steps, license, credits) per STYLE_GUIDE
+- [x] Add OFL.txt (SIL OFL 1.1) with IBM Plex + Brex attribution
+- [x] Add font-validation CI (.github/workflows/ci.yml)
+- [x] Add CLAUDE.md repository notes
+- [x] Add .gitattributes for proper file handling
+- [x] Update .gitignore for font development patterns
+- [x] Generate repository icon (docs/assets/icon.png)
+- [x] Remove stray tooling artifacts (md.txt, REFACTOR_FILELIST.txt, llms.txt)
+
 ## Phase 1: Foundation
 - [ ] Create proper directory structure (sources/, fonts/, documentation/, scripts/, tests/, specimens/)
 - [ ] Move UFO files from dev/01-ufo/ to sources/
@@ -8,8 +18,8 @@
 - [ ] Create requirements.txt with fontmake, fonttools, fontbakery
 - [ ] Create Makefile with build targets for TTF, OTF, WOFF, WOFF2
 - [ ] Write basic build script using fontmake
-- [ ] Update .gitignore for font development patterns
-- [ ] Create .gitattributes for proper file handling
+- [x] Update .gitignore for font development patterns
+- [x] Create .gitattributes for proper file handling
 - [ ] Test basic font generation from UFO sources
 
 ## Phase 2: Identity & Differentiation
